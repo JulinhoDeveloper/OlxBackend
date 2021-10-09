@@ -1,3 +1,5 @@
+const Auth = require('../middelwares/Auth');
+
 const express = require('express');
 const router = express.Router();
 
@@ -10,7 +12,7 @@ router.get('/ping', (req,res)=>{
 });
 
 
-router.get('/states', UserController.getStates);
+router.get('/states', Auth.private, UserController.getStates);
 
 router.post('/user/signin', AuthController.signin);
 router.post('/user/signup', AuthController.signup);
@@ -18,7 +20,7 @@ router.post('/user/signup', AuthController.signup);
 router.get('/user/me', UserController.info);
 router.put('/user/me', UserController.editAction);
 
-router.get('/catefories', AdsController.getCategories);
+router.get('/categories', AdsController.getCategories);
 
 router.post('/ad/add', AdsController.addAction);
 router.get('/ad/list', AdsController.getList);

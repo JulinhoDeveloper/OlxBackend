@@ -1,18 +1,23 @@
 const mongoose = require('mongoose');
-mongoose.Promise = global.Promise;
 
-const modelSchema = new mongoose.Schema({
-    name: String,
-    email: String,
-    state: String,
-    passwordHash:String,
-    token: String
-});
-
-const modelName = 'User';
-
-if(mongoose.connection && mongoose.connection.models[modelName]){
-    module.exports = mongoose.connection.models[mongoose.modelName];
-} else {
-    module.exports  = mongoose.model(mongoose.modelName, modelSchema);
-}
+const userSchema = new mongoose.Schema(
+    {
+      name: {
+        type: String
+      },
+      email: {
+        type: String
+      },
+      state: {
+        type: String,
+      },
+      hashedPassword: {
+        type: String
+      },
+      token: {
+        type: String
+      },
+    },
+    { timestamps: true },
+  )
+  module.exports= mongoose.model('User', userSchema);

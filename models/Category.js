@@ -1,15 +1,16 @@
 const mongoose = require('mongoose');
-mongoose.Promise = global.Promise;
 
-const modelSchema = new mongoose.Schema({
-    name: String,
-    slug: String
-});
 
-const modelName = 'Category';
+const categorySchema = new mongoose.Schema({
+    
+        name: {
+          type: String
+        },
+        slug: {
+          type: String
+        },
+    },
+      { timestamps: true },
+    )
 
-if(mongoose.connection && mongoose.connection.models[modelName]){
-    module.exports = mongoose.connection.models[mongoose.modelName];
-} else {
-    module.exports  = mongoose.model(mongoose.modelName, modelSchema);
-}
+module.exports  = mongoose.model('Categpry', categorySchema);

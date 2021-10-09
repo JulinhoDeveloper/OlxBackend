@@ -1,24 +1,42 @@
 const mongoose = require('mongoose');
-mongoose.Promise = global.Promise;
 
-const modelSchema = new mongoose.Schema({
-    idUser: String,
-    state: String,
-    category: String,
-    images: [Object],
-    dateCreated: Date,
-    title: String,
-    price: Number,
-    priceNegotiable: Boolean,
-    description: String,
-    views: Number,
-    status: String
-});
+const adSchema = new mongoose.Schema({
+    
+    idUser: {
+      type: String
+    },
+    state: {
+      type: String
+    },
+    category: {
+      type: String,
+    },
+    images: {
+      type: [Object]
+    },
+    dateCreated: {
+      type: Data
+    },
+    title: {
+        type: String
+      },
+      price: {
+        type: Number
+      }, 
+      priceNegotiable: {
+        type: Boolean
+      },
+      description: {
+        type: String
+      },
+      views: {
+        type: Number
+      },
+      Status: {
+        type: String
+      },
+  },
+  { timestamps: true },
+)
 
-const modelName = 'Ad';
-
-if(mongoose.connection && mongoose.connection.models[modelName]){
-    module.exports = mongoose.connection.models[mongoose.modelName];
-} else {
-    module.exports  = mongoose.model(mongoose.modelName, modelSchema);
-}
+module.exports  = mongoose.model('Ad', adSchema);

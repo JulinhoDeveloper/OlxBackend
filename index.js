@@ -3,21 +3,15 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const fileupload = require('express-fileupload');
+const { dbConnection } = require('./database/config');
+
 
 const apiRoutes = require('./routes/routes');
 
-mongoose.connect(process.env.DATABASE,{
-useNewUrlParser: true,
-useUnifiedTopology: true
-}
-);
-console.log('conectado');
-mongoose.Promise = global.Promise;
-mongoose.connection.on('error', (error)=>{
-    console.log('Erro:', error.message);
-});
-
 const server = express();
+
+// Banco de dados
+dbConnection();
 
 server.use(cors());
 server.use(express.json());
