@@ -38,7 +38,6 @@ info: async (req,res) =>{
      // });
       adList.push({ ...ads[i], category: cat.slug });
      }
-
   res.json({
     name: user.name,
     email: user.email,
@@ -47,6 +46,6 @@ info: async (req,res) =>{
   });
 },
 editAction: async (req,res) =>{
-
+res.json({})
 }
 };
