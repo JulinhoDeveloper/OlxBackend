@@ -15,7 +15,7 @@ const adSchema = new mongoose.Schema({
       type: [Object]
     },
     dateCreated: {
-      type: Data
+      type: [Date]
     },
     title: {
         type: String
@@ -38,5 +38,4 @@ const adSchema = new mongoose.Schema({
   },
   { timestamps: true },
 )
-
 module.exports  = mongoose.model('Ad', adSchema);
