@@ -21,8 +21,8 @@ module.exports = {
          errorMessage: 'Senha precisa ter 2 caracteres'
      },
      state: {
-         notEmpty: true,
+        notEmpty: true,
          errorMessage: 'Estado não preenchido'
-     }
+    }
  })
 };

@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema(
       state: {
         type: String,
       },
-      hashedPassword: {
+      passwordHash: {
         type: String
       },
       token: {
@@ -20,4 +20,4 @@ const userSchema = new mongoose.Schema(
     },
     { timestamps: true },
   )
-  module.exports= mongoose.model('User', userSchema);
+  module.exports= mongoose.model('Userss', userSchema);
