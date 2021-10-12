@@ -54,20 +54,20 @@ module.exports = {
     }
 
  // validando o estado
- // if (mongoose.Types.ObjectId.isValid(data.state)){
-//const stateItem = await State.findById(data.state);
-//if(!stateItem){
- //  res.json({
-  //     error: {state:{msg: 'Estado não existe'}}
-  //  });
-  // return;
-//}
-//} else {
-  //  res.json({
-   //    error: {state:{msg: 'Codigode estado inválido'}}
-  //  });
-  //  return;
-//}
+ if (mongoose.Types.ObjectId.isValid(data.state)){
+const stateItem = await State.findById(data.state);
+if(!stateItem){
+  res.json({
+       error: {state:{msg: 'Estado não existe'}}
+   });
+   return;
+}
+} else {
+    res.json({
+       error: {state:{msg: 'Codigode estado inválido'}}
+   });
+    return;
+}
 const passwordHash = await bcrypt.hash(data.password, 10);
 
 const payload = (Date.now() + Math.random()).toString();

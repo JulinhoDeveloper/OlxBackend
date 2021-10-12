@@ -1,12 +1,13 @@
 const mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
 
-
-const stateSchema = new mongoose.Schema(
-    {
-      name: {
-        type: String
-      },
-    },
-    { timestamps: true },
-  )
-  module.exports= mongoose.model('State', stateSchema);
+const modelSchema = new mongoose.Schema({
+  name:  String   
+ });
+ const modelName = 'State';
+  
+ if(mongoose.connection && mongoose.connection.models[modelName]){
+   module.exports = mongoose.connection.models[modelName];
+ }else {
+   module.exports = mongoose.model(modelName, modelSchema);
+ }
